@@ -84,7 +84,7 @@ reward!(mdp,
 )
 
 # solver options
-solver = ParallelValueIteration()
+solver = ParallelValueIteration(verbose=false)
 discretize_statevariable!(solver, "x", StepX)
 
 end
