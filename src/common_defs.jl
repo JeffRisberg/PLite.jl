@@ -9,7 +9,7 @@ export
 
 abstract LazyVar
 
-type RangeVar <: LazyVar
+struct RangeVar <: LazyVar
 
   varname::AbstractString
   minval::Float64
@@ -24,7 +24,7 @@ type RangeVar <: LazyVar
 
 end
 
-type ValuesVar <: LazyVar
+struct ValuesVar <: LazyVar
 
   varname::AbstractString
   values::Vector
