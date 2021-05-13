@@ -7,7 +7,7 @@ export
   solve,
   getpolicy
 
-abstract LazyVar
+abstract type LazyVar end
 
 struct RangeVar <: LazyVar
 
