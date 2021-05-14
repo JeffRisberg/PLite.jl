@@ -27,11 +27,11 @@ function solveset(mdp::MDP, svi::SerialValueIteration)
   qval = zeros(nactions, nstates)
   resid = 0.0
 
-  #iter = 0
+  iter = 0
   itertime = 0.0
   cputime = 0.0
 
-  for iter in 1:svi.maxiter
+  for i in 1:svi.maxiter
 
     #tic()
     resid = -Inf
@@ -82,6 +82,7 @@ function solveset(mdp::MDP, svi::SerialValueIteration)
     vtmp = vold
     vold = vnew
     vnew = vtmp
+    iter = i
 
   end
 
@@ -120,11 +121,11 @@ function solveprob(mdp::MDP, svi::SerialValueIteration)
   qval = zeros(nactions, nstates)
   resid = 0.0
 
-  #iter = 0
+  iter = 0
   itertime = 0.0
   cputime = 0.0
 
-  for iter in 1:svi.maxiter
+  for i in 1:svi.maxiter
 
     #tic()
     resid = -Inf
@@ -175,6 +176,7 @@ function solveprob(mdp::MDP, svi::SerialValueIteration)
     vtmp = vold
     vold = vnew
     vnew = vtmp
+    iter = i
 
   end
 
