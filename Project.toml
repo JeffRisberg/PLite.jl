@@ -1,3 +1,6 @@
 name = "PLite"
 uuid = "7876af07-990d-54b4-8888-23690620f79a"
 version = "0.1.0"
+
+[deps]
+GridInterpolations = "bb4c363b-b914-514b-8517-4eb369bc008a"

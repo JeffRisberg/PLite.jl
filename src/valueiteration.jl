@@ -9,9 +9,9 @@ export
 const MaxIter = 1000
 const Tol = 1e-4
 const Discount = 0.99
-const NThreads = CPU_CORES / 2
+const NThreads = 2 / 2
 
-type LazyDiscrete
+struct LazyDiscrete
 
   varname::AbstractString
   step::Float64
@@ -20,9 +20,9 @@ type LazyDiscrete
 
 end
 
-abstract ValueIteration <: Solver
+abstract type ValueIteration <: Solver end
 
-type SerialValueIteration <: ValueIteration
+struct SerialValueIteration <: ValueIteration
 
   verbose::Bool
 
@@ -52,7 +52,7 @@ type SerialValueIteration <: ValueIteration
 
 end
 
-type ParallelValueIteration <: ValueIteration
+struct ParallelValueIteration <: ValueIteration
 
   nthreads::Int64
   verbose::Bool
@@ -85,7 +85,7 @@ type ParallelValueIteration <: ValueIteration
 
 end
 
-type ValueIterationSolution <: Solution
+struct ValueIterationSolution <: Solution
 
   qval::Matrix{Float64}  # nactions x nstates Q-value matrix
   stategrid::RectangleGrid
