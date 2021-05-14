@@ -87,11 +87,11 @@ function internalsolve(mdp::MDP, pvi::ParallelValueIteration)
   end
 
   if iter == pvi.maxiter
-    warn(string(
+    @warn(string(
       "maximum number of iterations reached; check accuracy of solutions"))
   end
 
-  info(string(
+  @info(string(
     "value iteration solution generated\n",
     "cputime [s] = ", cputime, "\n",
     "number of iterations = ", iter, "\n",

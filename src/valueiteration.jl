@@ -108,7 +108,7 @@ end
 
 function discretize_statevariable!(vi::ValueIteration, varname::AbstractString, step::Real)
   if haskey(vi.statemap, varname)
-    warn(string(
+    @warn(string(
       "state variable ", varname, " already discretized in ValueIteration object, ",
       "replacing existing discretization scheme"))
   end
@@ -117,7 +117,7 @@ end
 
 function discretize_actionvariable!(vi::ValueIteration, varname::AbstractString, step::Real)
   if haskey(vi.actionmap, varname)
-    warn(string(
+    @warn(string(
       "action variable ", varname, " already discretized in ValueIteration object, ",
       "replacing existing discretization scheme"))
   end

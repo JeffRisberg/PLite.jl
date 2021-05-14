@@ -34,7 +34,7 @@ function getspace(
     elseif isa(lazy, ValuesVar)
       space[ivar] = map(Float64, collect(1:length(lazy.values)))  # map to indices
     else
-      error(string(
+      @error(string(
         "unknown state/action variable definition type for ", var))
     end
   end

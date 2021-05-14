@@ -36,7 +36,7 @@ function getspace(
     elseif isa(lazy, ValuesVar)
       space[ivar] = map(Float64, collect(1:length(lazy.values)))  # map to indices
     else
-      error(string(
+      @error(string(
         "unknown state/action variable definition type for ", var))
     end
   end
@@ -62,7 +62,7 @@ function getvar(
     elseif isa(lazy, ValuesVar)
       var[ivar] = lazy.values[Int64(raw[ivar])]
     else
-      error(string(
+      @error(string(
         "unknown state/action variable definition type for ", argnames[ivar]))
     end
   end
@@ -86,7 +86,7 @@ function getidx(
     elseif isa(lazy, ValuesVar)
       idx[i] = findfirst(lazy.values, state[i])
     else
-      error(string(
+      @error(string(
         "unknown state/action variable definition type for ", argnames[ivar]))
     end
   end

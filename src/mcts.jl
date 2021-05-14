@@ -77,7 +77,7 @@ end
 
 function discretize_statevariable!(mcts::MCTS, varname::AbstractString, step::Real)
   if haskey(mcts.statemap, varname)
-    warn(string(
+    @warn(string(
       "state variable ", varname, " already discretized in ValueIteration object, ",
       "replacing existing discretization scheme"))
   end
@@ -86,7 +86,7 @@ end
 
 function discretize_actionvariable!(mcts::MCTS, varname::AbstractString, step::Real)
   if haskey(mcts.actionmap, varname)
-    warn(string(
+    @warn(string(
       "action variable ", varname, " already discretized in ValueIteration object, ",
       "replacing existing discretization scheme"))
   end

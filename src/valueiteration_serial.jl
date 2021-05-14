@@ -4,7 +4,7 @@ function internalsolve(mdp::MDP, svi::SerialValueIteration)
   elseif length(mdp.transition.argnames) > length(mdp.statemap) + length(mdp.actionmap)
     return solveprob(mdp, svi)
   else
-    error(string(
+    @error(string(
       "unkown transition function of neither T(s,a,s') nor T(s,a) type\n",
       "number of transition arguments: ",
       length(mdp.transition.argnames), "\n",
@@ -87,11 +87,11 @@ function solveset(mdp::MDP, svi::SerialValueIteration)
   end
 
   if iter == svi.maxiter
-    warn(string(
+    @warn(string(
       "maximum number of iterations reached; check accuracy of solutions"))
   end
 
-  info(string(
+  @info(string(
     "value iteration solution generated\n",
     "cputime [s] = ", cputime, "\n",
     "number of iterations = ", iter, "\n",
@@ -181,11 +181,11 @@ function solveprob(mdp::MDP, svi::SerialValueIteration)
   end
 
   if iter == svi.maxiter
-    warn(string(
+    @warn(string(
       "maximum number of iterations reached; check accuracy of solutions"))
   end
 
-  info(string(
+  @info(string(
     "value iteration solution generated\n",
     "cputime [s] = ", cputime, "\n",
     "number of iterations = ", iter, "\n",
