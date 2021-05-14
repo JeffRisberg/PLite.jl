@@ -33,7 +33,7 @@ function solveset(mdp::MDP, svi::SerialValueIteration)
 
   for iter in 1:svi.maxiter
 
-    tic()
+    #tic()
     resid = -Inf
 
     for istate in 1:nstates
@@ -70,12 +70,12 @@ function solveset(mdp::MDP, svi::SerialValueIteration)
 
     end
 
-    itertime = toq()
-    cputime += itertime
+    #itertime = toq()
+    #cputime += itertime
 
     if svi.verbose
       println(string(
-        "iter $iter, resid: $resid, itertime: $itertime, cputime: $cputime"))
+        "iter $iter, resid: $resid"))
     end
 
     resid < svi.tol ? break : nothing
