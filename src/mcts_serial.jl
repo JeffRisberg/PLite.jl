@@ -144,7 +144,7 @@ end
 function getvar(
     grid::RectangleGrid,
     map::Dict{AbstractString, LazyVar},
-    argnames::Vector{ASCIIString},
+    argnames::Vector{String},
     index::Int64)
 
   raw = ind2x(grid, index)
@@ -169,7 +169,7 @@ end
 # Returns the actual variable from GridInterpolations grid state
 function getvar(
     map::Dict{AbstractString, LazyVar},
-    argnames::Vector{ASCIIString},
+    argnames::Vector{String},
     gridstate::Vector{Float64})
 
   var = Array(Any, length(gridstate))
@@ -194,7 +194,7 @@ end
 function getgridstate(
     grid::RectangleGrid,
     map::Dict{AbstractString, LazyVar},
-    argnames::Vector{ASCIIString},
+    argnames::Vector{String},
     state::Vector)
 
   gridstate = Array(Float64, length(state))

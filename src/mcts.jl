@@ -21,9 +21,9 @@ const MaxDepth = 20
 const ExploreExploit = 3.0
 const Discount = 0.99
 
-typealias ActualState Vector
+# typealias ActualState Vector
 
-type StateNode
+struct StateNode
 
   n::Vector{Int64}  # number of visits at the node for each action
   qval::Vector{Float64}  # estimated value for each action
@@ -33,7 +33,7 @@ type StateNode
 
 end
 
-type LazyDiscrete
+struct LazyDiscrete
 
   varname::AbstractString
   step::Float64
@@ -42,16 +42,16 @@ type LazyDiscrete
 
 end
 
-abstract MCTS <: Solver
+abstract type MCTS <: Solver end
 
-type SerialMCTS <: MCTS
+struct SerialMCTS <: MCTS
 
   niter::Int64  # number of iterations during each action selection
   maxdepth::Int64  # max depth of search tree
   exex::Float64  # exploration-exploitation constant
   discount::Float64  # simulation/rollout discount factor
 
-  tree::Dict{ActualState, StateNode}
+  tree::Dict{Vector, StateNode}
   statemap::Dict{AbstractString, LazyDiscrete}
   actionmap::Dict{AbstractString, LazyDiscrete}
   stategrid::RectangleGrid
@@ -67,7 +67,7 @@ type SerialMCTS <: MCTS
       Int64(maxdepth),
       Float64(exex),
       Float64(discount),
-      Dict{ActualState, StateNode}(),
+      Dict{Vector, StateNode}(),
       Dict{AbstractString, LazyDiscrete}(),
       Dict{AbstractString, LazyDiscrete}(),
       RectangleGrid(),

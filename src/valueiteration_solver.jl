@@ -20,7 +20,7 @@ end
 
 function getspace(
     dim::Int64,
-    args::Vector{ASCIIString},
+    args::Vector{String},
     lazymap::Dict{AbstractString, LazyVar},
     discmap::Dict{AbstractString, LazyDiscrete})
 
@@ -47,7 +47,7 @@ end
 function getvar(
     grid::RectangleGrid,
     map::Dict{AbstractString, LazyVar},
-    argnames::Vector{ASCIIString},
+    argnames::Vector{String},
     index::Int64)
 
   raw = ind2x(grid, index)
@@ -72,7 +72,7 @@ end
 # Inverse of getvar; returns the GridInterpolations index for a state
 function getidx(
     map::Dict{AbstractString, LazyVar},
-    argnames::Vector{ASCIIString},
+    argnames::Vector{String},
     state::Vector)
 
   idx = Array(Float64, length(state))
@@ -98,7 +98,7 @@ function transition(
     vi::ValueIteration,
     state::Vector,
     action::Vector,
-    stateargnames::Vector{ASCIIString})
+    stateargnames::Vector{String})
 
   results = mdp.transition.fn(state..., action...)
   nresults = length(results)

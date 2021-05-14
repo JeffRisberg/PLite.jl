@@ -20,7 +20,7 @@ end
 
 function getspace(
     dim::Int64,
-    args::Vector{ASCIIString},
+    args::Vector{String},
     lazymap::Dict{AbstractString, LazyVar},
     discmap::Dict{AbstractString, LazyDiscrete})
 
