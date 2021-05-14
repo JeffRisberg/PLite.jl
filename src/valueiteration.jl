@@ -11,7 +11,7 @@ const Tol = 1e-4
 const Discount = 0.99
 const NThreads = 2 / 2
 
-struct LazyDiscrete
+mutable struct LazyDiscrete
 
   varname::AbstractString
   step::Float64
@@ -22,7 +22,7 @@ end
 
 abstract type ValueIteration <: Solver end
 
-struct SerialValueIteration <: ValueIteration
+mutable struct SerialValueIteration <: ValueIteration
 
   verbose::Bool
 
@@ -52,7 +52,7 @@ struct SerialValueIteration <: ValueIteration
 
 end
 
-struct ParallelValueIteration <: ValueIteration
+mutable struct ParallelValueIteration <: ValueIteration
 
   nthreads::Int64
   verbose::Bool
@@ -85,7 +85,7 @@ struct ParallelValueIteration <: ValueIteration
 
 end
 
-struct ValueIterationSolution <: Solution
+mutable struct ValueIterationSolution <: Solution
 
   qval::Matrix{Float64}  # nactions x nstates Q-value matrix
   stategrid::RectangleGrid

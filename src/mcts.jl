@@ -23,7 +23,7 @@ const Discount = 0.99
 
 # typealias ActualState Vector
 
-struct StateNode
+mutable struct StateNode
 
   n::Vector{Int64}  # number of visits at the node for each action
   qval::Vector{Float64}  # estimated value for each action
@@ -33,7 +33,7 @@ struct StateNode
 
 end
 
-struct LazyDiscrete
+mutable struct LazyDiscrete
 
   varname::AbstractString
   step::Float64
@@ -44,7 +44,7 @@ end
 
 abstract type MCTS <: Solver end
 
-struct SerialMCTS <: MCTS
+mutable struct SerialMCTS <: MCTS
 
   niter::Int64  # number of iterations during each action selection
   maxdepth::Int64  # max depth of search tree

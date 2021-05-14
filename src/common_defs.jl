@@ -9,7 +9,7 @@ export
 
 abstract type LazyVar end
 
-struct RangeVar <: LazyVar
+mutable struct RangeVar <: LazyVar
 
   varname::AbstractString
   minval::Float64
@@ -24,7 +24,7 @@ struct RangeVar <: LazyVar
 
 end
 
-struct ValuesVar <: LazyVar
+mutable struct ValuesVar <: LazyVar
 
   varname::AbstractString
   values::Vector
@@ -33,7 +33,7 @@ struct ValuesVar <: LazyVar
 
 end
 
-struct LazyFunc
+mutable struct LazyFunc
 
   empty::Bool
   argnames::Vector{String}
@@ -44,7 +44,7 @@ struct LazyFunc
 
 end
 
-struct MDP
+mutable struct MDP
 
   statemap::Dict{AbstractString, LazyVar}
   actionmap::Dict{AbstractString, LazyVar}
