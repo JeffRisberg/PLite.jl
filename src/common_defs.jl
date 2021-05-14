@@ -33,18 +33,18 @@ struct ValuesVar <: LazyVar
 
 end
 
-type LazyFunc
+struct LazyFunc
 
   empty::Bool
-  argnames::Vector{ASCIIString}
+  argnames::Vector{String}
   fn::Function
 
   LazyFunc() = new(true, Array(AbstractString, 0), function emptyfunc() end)
-  LazyFunc(argnames::Vector{ASCIIString}, fn::Function) = new(false, argnames, fn)
+  LazyFunc(argnames::Vector{String}, fn::Function) = new(false, argnames, fn)
 
 end
 
-type MDP
+struct MDP
 
   statemap::Dict{AbstractString, LazyVar}
   actionmap::Dict{AbstractString, LazyVar}
@@ -59,8 +59,8 @@ type MDP
 
 end
 
-abstract Solver
-abstract Solution
+abstract type Solver end
+abstract type Solution end
 
 function statevariable!(mdp::MDP, varname::AbstractString, minval::Real, maxval::Real)
   if haskey(mdp.statemap, varname)
@@ -99,7 +99,7 @@ function actionvariable!(mdp::MDP, varname::AbstractString, values::Vector)
 end
 
 # |argnames| is an ordered list of argument names for |transition|
-function transition!(mdp::MDP, argnames::Vector{ASCIIString}, transition::Function)
+function transition!(mdp::MDP, argnames::Vector{String}, transition::Function)
   if !mdp.transition.empty
     warn(string(
       "transition function already exists in MDP object, ",
@@ -109,7 +109,7 @@ function transition!(mdp::MDP, argnames::Vector{ASCIIString}, transition::Functi
 end
 
 # |argnames| is an ordered list of argument names for |reward|
-function reward!(mdp::MDP, argnames::Vector{ASCIIString}, reward::Function)
+function reward!(mdp::MDP, argnames::Vector{String}, reward::Function)
   if !mdp.reward.empty
     warn(string(
       "reward function already exists in MDP object, ",
