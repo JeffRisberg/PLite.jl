@@ -4,3 +4,4 @@ version = "0.1.0"
 
 [deps]
 GridInterpolations = "bb4c363b-b914-514b-8517-4eb369bc008a"
+StatsBase = "2913bbd2-ae8a-5f71-8c99-4fb6c76f3a91"

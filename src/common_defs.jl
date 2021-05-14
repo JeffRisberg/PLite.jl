@@ -64,7 +64,7 @@ abstract type Solution end
 
 function statevariable!(mdp::MDP, varname::AbstractString, minval::Real, maxval::Real)
   if haskey(mdp.statemap, varname)
-    warn(string(
+    @warn(string(
       "state variable ", varname, " already exists in MDP object, ",
       "replacing existing variable definition"))
   end
@@ -73,7 +73,7 @@ end
 
 function statevariable!(mdp::MDP, varname::AbstractString, values::Vector)
   if haskey(mdp.statemap, varname)
-    warn(string(
+    @warn(string(
       "state variable ", varname, " already exists in MDP object, ",
       "replacing existing variable definition"))
   end
@@ -82,7 +82,7 @@ end
 
 function actionvariable!(mdp::MDP, varname::AbstractString, minval::Real, maxval::Real)
   if haskey(mdp.actionmap, varname)
-    warn(string(
+    @warn(string(
       "action variable ", varname, " already exists in MDP object, ",
       "replacing existing variable definition"))
   end
@@ -91,7 +91,7 @@ end
 
 function actionvariable!(mdp::MDP, varname::AbstractString, values::Vector)
   if haskey(mdp.actionmap, varname)
-    warn(string(
+    @warn(string(
       "action variable ", varname, " already exists in MDP object, ",
       "replacing existing variable definition"))
   end
@@ -101,7 +101,7 @@ end
 # |argnames| is an ordered list of argument names for |transition|
 function transition!(mdp::MDP, argnames::Vector{String}, transition::Function)
   if !mdp.transition.empty
-    warn(string(
+    @warn(string(
       "transition function already exists in MDP object, ",
       "replacing existing function definition"))
   end
@@ -111,7 +111,7 @@ end
 # |argnames| is an ordered list of argument names for |reward|
 function reward!(mdp::MDP, argnames::Vector{String}, reward::Function)
   if !mdp.reward.empty
-    warn(string(
+    @warn(string(
       "reward function already exists in MDP object, ",
       "replacing existing function definition"))
   end
