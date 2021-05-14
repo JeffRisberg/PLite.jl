@@ -139,7 +139,7 @@ function getpolicy(mdp::MDP, solution::ValueIterationSolution)
       if isa(statevar, RangeVar)
         stateidxvec[idim] = statevec[idim]
       elseif isa(statevar, ValuesVar)
-        stateidxvec[idim] = findfirst(statevar.values, statevec[idim])
+        stateidxvec[idim] = findfirst(==(statevar.values), statevec[idim])
       else
         error(string(
           "unknown state variable definition type for ", statevar))

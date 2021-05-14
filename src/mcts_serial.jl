@@ -205,7 +205,7 @@ function getgridstate(
       cutpoints = grid.cutPoints[i]
       gridstate[i] = cutpoints[indmin(abs(cutpoints - state[i]))]
     elseif isa(lazy, ValuesVar)
-      gridstate[i] = findfirst(lazy.values, state[i])
+      gridstate[i] = findfirst(==(lazy.values), state[i])
     else
       error(string(
         "unknown state/action variable definition type for ", argnames[ivar]))
