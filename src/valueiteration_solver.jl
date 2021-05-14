@@ -84,10 +84,6 @@ function getidx(
     if isa(lazy, RangeVar)
       idx[i] = state[i]
     elseif isa(lazy, ValuesVar)
-        #@warn(lazy.values)
-        #@warn(state[i])
-        #@warn(findfirst(==(lazy.values), state[i]))
-        #@warn(findfirst(==(state[i]), lazy.values))
       idx[i] = findfirst(==(state[i]), lazy.values)
     else
       @error(string(

@@ -27,7 +27,7 @@ function solveset(mdp::MDP, svi::SerialValueIteration)
   qval = zeros(nactions, nstates)
   resid = 0.0
 
-  iter = 0
+  #iter = 0
   itertime = 0.0
   cputime = 0.0
 
