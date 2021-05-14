@@ -110,7 +110,7 @@ end
 
 function randargs(mdp::MDP)
   nargs = length(mdp.transition.argnames)
-  args = Array(Any, nargs)
+  args = Array{Any,1}(undef, nargs)
   for iarg in 1:nargs
     argname = mdp.transition.argnames[iarg]
     if haskey(mdp.statemap, argname)
