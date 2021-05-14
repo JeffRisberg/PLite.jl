@@ -1,3 +1,5 @@
+using SharedArrays
+
 function lazySolve(mdp::MDP, vi::ValueIteration)
   statespace, actionspace = getspaces(mdp, vi)
   vi.stategrid = RectangleGrid(statespace...)
