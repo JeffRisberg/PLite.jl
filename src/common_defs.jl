@@ -39,7 +39,7 @@ struct LazyFunc
   argnames::Vector{String}
   fn::Function
 
-  LazyFunc() = new(true, Array(AbstractString, 0), function emptyfunc() end)
+  LazyFunc() = new(true, AbstractString[], function emptyfunc() end)
   LazyFunc(argnames::Vector{String}, fn::Function) = new(false, argnames, fn)
 
 end
