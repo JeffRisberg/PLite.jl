@@ -148,7 +148,7 @@ function getvar(
     index::Int64)
 
   raw = ind2x(grid, index)
-  var = Array(Any, length(raw))
+  var = Array{Any,1}(undef, length(raw))
 
   for ivar in 1:length(raw)
     lazy = map[argnames[ivar]]
@@ -172,7 +172,7 @@ function getvar(
     argnames::Vector{String},
     gridstate::Vector{Float64})
 
-  var = Array(Any, length(gridstate))
+  var = Array{Any,1}(undef, length(gridstate))
 
   for ivar in 1:length(gridstate)
     lazy = map[argnames[ivar]]
@@ -197,7 +197,7 @@ function getgridstate(
     argnames::Vector{String},
     state::Vector)
 
-  gridstate = Array(Float64, length(state))
+  gridstate = Array{Float64,1}(undef, length(state))
 
   for i in 1:length(gridstate)
     lazy = map[argnames[i]]

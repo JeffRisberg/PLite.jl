@@ -24,7 +24,7 @@ function getspace(
     lazymap::Dict{AbstractString, LazyVar},
     discmap::Dict{AbstractString, LazyDiscrete})
 
-  space = Array(Vector{Float64}, dim)
+  space = Array{Vector{Float64},1}(undef, dim)
   for ivar in 1:length(args)
     var = args[ivar]
     lazy = lazymap[var]

@@ -170,7 +170,7 @@ function getpolicy(mdp::MDP, solution::ValueIterationSolution)
     end
 
     rawaction = ind2x(solution.actiongrid, iaction_best)
-    action = Array(Any, actiondim)
+    action = Array{Any,1}(undef, actiondim)
 
     for i in 1:actiondim
       actionvar = mdp.actionmap[actionargs[i]]

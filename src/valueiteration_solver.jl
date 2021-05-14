@@ -26,7 +26,7 @@ function getspace(
     lazymap::Dict{AbstractString, LazyVar},
     discmap::Dict{AbstractString, LazyDiscrete})
 
-  space = Array(Vector{Float64}, dim)
+  space = Array{Vector{Float64},1}(undef, dim)
   for ivar in 1:length(args)
     var = args[ivar]
     lazy = lazymap[var]
@@ -53,7 +53,7 @@ function getvar(
     index::Int64)
 
   raw = ind2x(grid, index)
-  var = Array(Any, length(raw))
+  var = Array{Any,1}(undef, length(raw))
 
   for ivar in 1:length(raw)
     lazy = map[argnames[ivar]]
@@ -77,7 +77,7 @@ function getidx(
     argnames::Vector{String},
     state::Vector)
 
-  idx = Array(Float64, length(state))
+  idx = Array{Float64,1}(undef, length(state))
 
   for i in 1:length(idx)
     lazy = map[argnames[i]]
@@ -116,8 +116,8 @@ function transition(
     nstateps += length(interp[1])
   end
 
-  states = Array(Int64, nstateps)
-  probs = Array(Float64, nstateps)
+  states = Array{Int64,1}(undef, nstateps)
+  probs = Array{Float64,1}(undef, nstateps)
 
   istate = 0
   for iresult in 1:nresults
