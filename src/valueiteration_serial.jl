@@ -74,8 +74,7 @@ function solveset(mdp::MDP, svi::SerialValueIteration)
     #cputime += itertime
 
     if svi.verbose
-      println(string(
-        "iter $iter, resid: $resid"))
+      println(string("iter $iter, resid: $resid"))
     end
 
     resid < svi.tol ? break : nothing
@@ -121,13 +120,13 @@ function solveprob(mdp::MDP, svi::SerialValueIteration)
   qval = zeros(nactions, nstates)
   resid = 0.0
 
-  iter = 0
+  #iter = 0
   itertime = 0.0
   cputime = 0.0
 
   for iter in 1:svi.maxiter
 
-    tic()
+    #tic()
     resid = -Inf
 
     for istate in 1:nstates
@@ -164,12 +163,11 @@ function solveprob(mdp::MDP, svi::SerialValueIteration)
 
     end
 
-    itertime = toq()
-    cputime += itertime
+    #itertime = toq()
+    #cputime += itertime
 
     if svi.verbose
-      println(string(
-        "iter $iter, resid: $resid, itertime: $itertime, cputime: $cputime"))
+      println(string("iter $iter, resid: $resid"))
     end
 
     resid < svi.tol ? break : nothing
