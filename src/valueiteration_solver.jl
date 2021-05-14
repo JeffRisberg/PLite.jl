@@ -84,7 +84,9 @@ function getidx(
     if isa(lazy, RangeVar)
       idx[i] = state[i]
     elseif isa(lazy, ValuesVar)
-      idx[i] = findfirst(==(lazy.values), state[i])
+        @warn(lazy.values)
+        @warn(state[i])
+      #idx[i] = findfirst(==(lazy.values), state[i])
     else
       @error(string(
         "unknown state/action variable definition type for ", argnames[ivar]))
